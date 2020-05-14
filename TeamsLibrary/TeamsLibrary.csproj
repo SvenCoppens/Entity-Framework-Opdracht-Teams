@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200505164718_InitialAttempt01.cs" />
+    <Compile Remove="Migrations\20200505164718_InitialAttempt01.Designer.cs" />
+    <Compile Remove="Migrations\20200505165000_InitialAttempt02.cs" />
+    <Compile Remove="Migrations\20200505165000_InitialAttempt02.Designer.cs" />
+    <Compile Remove="Migrations\20200505165130_InitialAttempt2.cs" />
+    <Compile Remove="Migrations\20200505165130_InitialAttempt2.Designer.cs" />
+    <Compile Remove="Migrations\20200505165322_InitialAttempt01.cs" />
+    <Compile Remove="Migrations\20200505165322_InitialAttempt01.Designer.cs" />
+    <Compile Remove="Migrations\20200505172640_InitialAttempt02.cs" />
+    <Compile Remove="Migrations\20200505172640_InitialAttempt02.Designer.cs" />
+    <Compile Remove="Migrations\20200505174252_InitialAttempt03.cs" />
+    <Compile Remove="Migrations\20200505174252_InitialAttempt03.Designer.cs" />
+    <Compile Remove="Migrations\20200505174433_InitialAttempt04.cs" />
+    <Compile Remove="Migrations\20200505174433_InitialAttempt04.Designer.cs" />
+    <Compile Remove="Migrations\20200505174751_InitialAttempt05.cs" />
+    <Compile Remove="Migrations\20200505174751_InitialAttempt05.Designer.cs" />
+    <Compile Remove="Migrations\20200505180026_InitialAttempt05.cs" />
+    <Compile Remove="Migrations\20200505180026_InitialAttempt05.Designer.cs" />
+    <Compile Remove="Migrations\20200505180301_InitialAttempt05.cs" />
+    <Compile Remove="Migrations\20200505180301_InitialAttempt05.Designer.cs" />
+    <Compile Remove="Migrations\20200505180508_InitialAttempt05.cs" />
+    <Compile Remove="Migrations\20200505180508_InitialAttempt05.Designer.cs" />
+    <Compile Remove="Migrations\20200505180536_InitialAttempt06.cs" />
+    <Compile Remove="Migrations\20200505180536_InitialAttempt06.Designer.cs" />
+    <Compile Remove="Migrations\20200505180603_InitialAttempt06.cs" />
+    <Compile Remove="Migrations\20200505180603_InitialAttempt06.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
+</Project>
