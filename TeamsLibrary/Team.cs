@@ -18,6 +18,7 @@ namespace TeamsLibrary
         [Key,DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int StamNummer { get; set; }
         //required maken misschien later?
+        [Required]
         public string Naam { get; set; }
         public string Bijnaam { get; set; }
         public string Trainer { get; set; }

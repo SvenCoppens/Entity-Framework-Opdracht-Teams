@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TeamsLibrary
 {
@@ -16,7 +17,20 @@ namespace TeamsLibrary
         public int TransferWaarde { get; set; }
         public int TeamStamNummer { get; set; }
         public Team Team { get; set; }
-        
+
+        public override bool Equals(object obj)
+        {
+            return obj is Speler speler &&
+                   Naam.Equals(speler.Naam) &&
+                   RugNummer == speler.RugNummer &&
+                   TransferWaarde == speler.TransferWaarde;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Naam, RugNummer, TransferWaarde);
+        }
+
         public void SetTeam(Team team)
         {
             Team = team;

@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeamsLibrary;
 
 namespace TeamsLibrary.Migrations
 {
     [DbContext(typeof(SpelerContext))]
-    partial class SpelerContextModelSnapshot : ModelSnapshot
+    [Migration("20200515132330_testingRequireds")]
+    partial class testingRequireds
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
