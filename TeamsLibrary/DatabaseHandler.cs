@@ -110,6 +110,14 @@ namespace TeamsLibrary
                 return dataTransfer;
             }
         }
+        public void TransferSpeler(Speler speler,Team nieuwteam)
+        {
+            Team oudTeam = speler.Team;
+            speler.Team = nieuwteam;
+            Transfer transfer = new Transfer(speler, oudTeam, nieuwteam);
+            VoegTransferToe(transfer);
+            UpdateSpeler(speler);
 
+        }
     }
 }

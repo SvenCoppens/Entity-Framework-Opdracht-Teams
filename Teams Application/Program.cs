@@ -14,15 +14,18 @@ namespace Teams_Application
 
             Speler testSpeler = new Speler("Sven", 12, 5);
             handler.VoegSpelerToe(testSpeler);
-            Team testTeam = new Team(95, "Pelicans", "Pecs", "That homeless guy");
-            handler.VoegTeamToe(testTeam);
+            Team testTeam1 = new Team(95, "Pelicans", "Pels", "test trainer1");
+            handler.VoegTeamToe(testTeam1);
 
-            //Transfer testTransfer = new Transfer();
-            //testTransfer.OudTeam = testTeam;
-            //testTransfer.NieuwTeam = handler.SelecteerTeam(7);
-            //testTransfer.Speler = testSpeler;
+            testSpeler.Team = testTeam1;
+            handler.UpdateSpeler(testSpeler);
 
-            //handler.VoegTransferToe(testTransfer);
+            testTeam1.Bijnaam = "Mets";
+            handler.UpdateTeam(testTeam1);
+
+            Team testTeam2 = new Team(2, "testTeam2", "team2", "trainer2");
+            handler.VoegTeamToe(testTeam2);
+            handler.TransferSpeler(testSpeler, testTeam2);
 
 
         }
