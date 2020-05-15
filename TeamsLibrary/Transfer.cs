@@ -7,6 +7,10 @@ namespace TeamsLibrary
 {
     public class Transfer
     {
+        public Transfer()
+        {
+
+        }
         //public Transfer(int spelerID,int nieuwTeamStamNummer,int oudTeamStamNummer)
         //{
         //    SpelerID = spelerID;

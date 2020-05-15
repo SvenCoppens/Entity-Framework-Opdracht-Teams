@@ -17,16 +17,25 @@ namespace TeamsLibrary
         }
         [Key,DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int StamNummer { get; set; }
+        //required maken misschien later?
         public string Naam { get; set; }
         public string Bijnaam { get; set; }
         public string Trainer { get; set; }
 
         public ICollection<Speler> Spelers { get; set; } = new List<Speler>();
+
         public override bool Equals(object obj)
         {
-            if (obj is Team)
-                return StamNummer == (obj as Team).StamNummer;
-            else return false;
+            return obj is Team team &&
+                   StamNummer == team.StamNummer &&
+                   Naam == team.Naam &&
+                   Bijnaam == team.Bijnaam &&
+                   Trainer == team.Trainer;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(StamNummer, Naam, Bijnaam, Trainer);
         }
     }
 }

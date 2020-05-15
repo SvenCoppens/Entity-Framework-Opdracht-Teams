@@ -17,6 +17,7 @@ namespace TeamsLibrary
                 List<Speler> nieuweSpelers = new List<Speler>();
                 using (StreamReader reader = File.OpenText(Filepath))
                 {
+                    Dictionary<int, Team> stamnummerMetTeams = new Dictionary<int, Team>();
                     reader.ReadLine();
                     string line;
                     while ((line = reader.ReadLine()) != null)
@@ -30,14 +31,23 @@ namespace TeamsLibrary
                         string trainer = splitLine[5];
                         string bijnaam = splitLine[6];
                         Team team;
-                        if (context.Teams.Any(t => t.StamNummer == stamNr))
+                        if (!context.Teams.Any(t => t.StamNummer == stamNr))
                         {
-                            team = new Team(stamNr, clubNaam, bijnaam, trainer);
+                            if (!stamnummerMetTeams.ContainsKey(stamNr))
+                            {
+                                team = new Team(stamNr, clubNaam, bijnaam, trainer);
+                                stamnummerMetTeams.Add(stamNr, team);
+                                context.Teams.Add(team);
+                            }
+                            else
+                                team = stamnummerMetTeams[stamNr];
                         }
                         else team = context.Teams.Find(stamNr);
                         Speler temp = new Speler(naam, rugNummer, waarde);
                         temp.Team = team;
+                        temp.TeamStamNummer = team.StamNummer;
                         nieuweSpelers.Add(temp);
+                        
                     }
                 }
                 context.Spelers.AddRange(nieuweSpelers);
@@ -46,8 +56,11 @@ namespace TeamsLibrary
         }
         public void VoegSpelerToe(Speler speler)
         {
+            
             using(SpelerContext context = new SpelerContext())
             {
+                if (context.Teams.Any(t => t.StamNummer == speler.TeamStamNummer))
+                    speler.SetTeam(SelecteerTeam(speler.TeamStamNummer));
                 context.Spelers.Add(speler);
                 context.SaveChanges();
             }
@@ -112,9 +125,16 @@ namespace TeamsLibrary
         }
         public void TransferSpeler(Speler speler,Team nieuwteam)
         {
-            Team oudTeam = speler.Team;
+            Team oudTeam = SelecteerTeam(speler.Team.StamNummer);
+            using(SpelerContext context = new SpelerContext())
+            {
+                if(context.Teams.Any(t => t.StamNummer == nieuwteam.StamNummer))
+                {
+                    nieuwteam = SelecteerTeam(nieuwteam.StamNummer);
+                }
+            }
+            Transfer transfer = new Transfer(speler, speler.Team, nieuwteam);
             speler.Team = nieuwteam;
-            Transfer transfer = new Transfer(speler, oudTeam, nieuwteam);
             VoegTransferToe(transfer);
             UpdateSpeler(speler);
 
